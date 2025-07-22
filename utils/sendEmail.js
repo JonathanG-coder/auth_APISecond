@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Test temporaire (à supprimer une fois que ça marche)
-console.log("ELASTIC_EMAIL:", process.env.ELASTIC_EMAIL);
-console.log("ELASTIC_API_KEY:", process.env.ELASTIC_API_KEY);
+//console.log("ELASTIC_EMAIL:", process.env.ELASTIC_EMAIL);
+//console.log("ELASTIC_API_KEY:", process.env.ELASTIC_API_KEY);
 
 // const transporter = nodemailer.createTransport({
 //   host: "smtp.elasticemail.com",

@@ -1,16 +1,13 @@
 import express from 'express';
 import { register, login, verifyEmail, requestPasswordReset, resetPassword } from '../controllers/authController.js';
 import { authorize, protect } from '../middlewares/authMiddleware.js';
-import { validate} from "../middlewares/validate.js";
-import { createUserSchema } from '../validations/user.validation.js';
-import { createUser } from '../controllers/user.controller.js';
-
 
 const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
 router.get('/verify/:token', verifyEmail);
+
 
 router.post('/password-reset-request', requestPasswordReset);
 router.post('/reset-password/:token', resetPassword);
@@ -28,7 +25,6 @@ router.get('/moderator-section', protect, authorize('moderator', 'admin'), (req,
   res.json({ message: 'Bienvenue dans la section modérateur' });
 });
 
-router.post('/', validate(createUserSchema), createUser);
-
+router.post("/resend-verification", resendVerificationEmail);
 
 export default router;
