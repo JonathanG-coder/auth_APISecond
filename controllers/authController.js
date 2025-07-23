@@ -261,4 +261,20 @@ export async function resendVerificationEmail(req, res) {
     console.error("Erreur lors du renvoi de l’email :", error);
     res.status(500).json({ message: "Erreur lors de l’envoi du lien de vérification." });
   }
+
 }
+  export async function logout(req, res) {
+  try {
+    res.clearCookie("token", "", {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+    });
+
+    res.status(200).json({ message: "Déconnexion réussie." });
+  } catch (error) {
+    console.error("Erreur lors de la déconnexion :", error);
+    res.status(500).json({ message: "Erreur lors de la déconnexion." });
+  }
+}
+
