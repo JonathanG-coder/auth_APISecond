@@ -167,7 +167,7 @@ export async function requestPasswordReset(req, res) {
     const resetUrl = `${CLIENT_URL}/api/auth/reset-password/${resetToken}`;
 
     await sendEmail({
-      to: newUser.email,
+      to: user.email,
       //to: "wazabi64000@gmail.com", // ← temporaire
       subject: "Réinitialisation de mot de passe",
       html: `<p>Bonjour,</p>
