@@ -1,11 +1,16 @@
 import express from 'express';
 import { register, login, verifyEmail, requestPasswordReset, resetPassword } from '../controllers/authController.js';
 import { authorize, protect } from '../middlewares/authMiddleware.js';
+import { authLimiter } from '../middlewares/rateLimiter.js';
 
+
+import { resendVerificationEmail
+  
+ } from '../controllers/authController.js';
 const router = express.Router();
 
 router.post('/register', register);
-router.post('/login', login);
+router.post('/login',authLimiter, login);
 router.get('/verify/:token', verifyEmail);
 
 
